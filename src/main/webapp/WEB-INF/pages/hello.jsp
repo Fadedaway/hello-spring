@@ -20,7 +20,6 @@
         我是页面，你好世界！
         <br/>
         <input type="text" id="test" name="name" value="${user.name}"/>
-        <input type="text" id="test" name="phone" value="${user.phone}"/>
 </body>
 <script>
     var root ='<%=basePath%>';

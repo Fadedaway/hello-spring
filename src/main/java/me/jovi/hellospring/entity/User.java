@@ -1,13 +1,34 @@
 package me.jovi.hellospring.entity;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
+
 /**
  * Created by joyce on 2017/3/15.
  */
+@Table(name = "t_user")
+@Entity
 public class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+
+    @Column(name = "name")
     private String name;
 
-    private String phone;
+    @Column(name = "age")
+    private int age;
+
+    @Column(name = "sex")
+    private int sex;
+
+    @Column(name = "login_name")
+    private String loginName;
+
+    @Column(name = "password")
+    private String password;
 
     public String getName() {
         return name;
@@ -17,11 +38,43 @@ public class User {
         this.name = name;
     }
 
-    public String getPhone() {
-        return phone;
+    public int getId() {
+        return id;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public int getSex() {
+        return sex;
+    }
+
+    public void setSex(int sex) {
+        this.sex = sex;
+    }
+
+    public String getLoginName() {
+        return loginName;
+    }
+
+    public void setLoginName(String loginName) {
+        this.loginName = loginName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

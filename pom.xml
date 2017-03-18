@@ -56,6 +56,54 @@
         </dependency>-->
 
         <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+        </dependency>
+
+        <!-- apache commons begin -->
+        <dependency>
+            <groupId>commons-dbcp</groupId>
+            <artifactId>commons-dbcp</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-pool</groupId>
+            <artifactId>commons-pool</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+        </dependency>
+        <!-- apache commons end -->
+
+        <!-- hibernate begin -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>4.2.1.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>4.2.1.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.common</groupId>
+            <artifactId>hibernate-commons-annotations</artifactId>
+            <version>4.0.1.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>5.0.0.Final</version>
+        </dependency>
+        <!-- hibernate end -->
+
+        <dependency>
             <groupId>javax.servlet.jsp.jstl</groupId>
             <artifactId>jstl-api</artifactId>
             <version>1.2</version>
