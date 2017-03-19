@@ -41,7 +41,17 @@
             <filter-name>encodingFilter</filter-name>
             <url-pattern>/*</url-pattern>
         </filter-mapping>
-    
+
+        <!-- 解决 could not initialize proxy no session -->
+        <filter>
+            <filter-name>hibernateFilter</filter-name>
+            <filter-class>org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter</filter-class>
+        </filter>
+        <filter-mapping>
+            <filter-name>hibernateFilter</filter-name>
+            <url-pattern>/*</url-pattern>
+        </filter-mapping>
+
         <welcome-file-list>
             <welcome-file>/index.jsp</welcome-file>
         </welcome-file-list>

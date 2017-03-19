@@ -2,6 +2,7 @@ package me.jovi.hellospring.controller;
 
 import me.jovi.hellospring.entity.User;
 import me.jovi.hellospring.repositoryies.UserRepo;
+import me.jovi.hellospring.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,16 +22,23 @@ public class HelloController {
     @Autowired
     private UserRepo userRepo;
 
+    @Autowired
+    private UserService userService;
+
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     //@ResponseBody
     public String helloWorld(Model model){
-        logger.info("In HelloController: >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Have you seen!");
-        User user = new User();
+        try{
+            logger.info("In HelloController: >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Have you seen!");
+            User user = userService.getUserByName();
 
-        user.setName("Jovi Van (发发)");
-//        user.setPhone("18084475738");
-        model.addAttribute("user",user);
+            model.addAttribute("user",user);
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
         return "hello";
+
         //return "你好," + "世界！";
     }
 
