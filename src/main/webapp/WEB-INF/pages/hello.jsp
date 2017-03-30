@@ -9,6 +9,8 @@
 <html>
 <head>
     <title>Title</title>
+    <link href="/css/bootstrap.css" rel="stylesheet"/>
+    <link href="/css/bootstrap-theme.css" rel="stylesheet"/>
 </head>
 <body>
 <%
@@ -17,9 +19,59 @@
     String basePath = request.getScheme() + "://"+ request.getServerName() + ":" + request.getServerPort() + path + "/";
 
 %>
-        我是页面，你好世界！
-        <br/>
-        <input type="text" id="test" name="name" value="${user.name}"/>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Spring MVC + Bootstrap</a>
+        </div>
+    </div>
+</nav>
+
+<div class="jumbotron">
+    <div class="container">
+
+        <p align="center">
+            我是页面，你好世界！
+            <br/>
+            <input class="input-group-lg" type="text" id="test" name="name" value="${user.name}"/>
+        </p>
+        <p>
+            <a class="btn btn-primary btn-lg" href="#" role="button">Maps Talk</a>
+        </p>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Maps</h2>
+            <p>maps</p>
+            <p>
+                <a class="btn btn-danger" href="#" role="button">Maps</a>
+            </p>
+        </div>
+        <div class="col-md-4">
+            <h2>can</h2>
+            <p>can</p>
+            <p>
+                <a class="btn btn-default" href="#" role="button">can</a>
+            </p>
+        </div>
+        <div class="col-md-4">
+            <h2>Talk</h2>
+            <p>Talk</p>
+            <p>
+                <a class="btn btn-default" href="#" role="button">Talk</a>
+            </p>
+        </div>
+    </div>
+
+    <hr>
+    <footer>
+        <p>© ThinkingInGIS 2016</p>
+    </footer>
+</div>
 </body>
 <script>
     var root ='<%=basePath%>';

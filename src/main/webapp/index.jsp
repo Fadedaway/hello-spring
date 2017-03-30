@@ -8,9 +8,35 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>欢迎</title>
+    <link href="/css/bootstrap.css" rel="stylesheet"/>
+    <link href="/css/bootstrap-theme.css" rel="stylesheet"/>
+    <style>
+        body{
+            margin-left:auto;
+            margin-right:auto;
+            margin-TOP:100PX;
+            width:20em;
+        }
+    </style>
 </head>
 <body>
-    我是首页！
+    <p class="panel-heading h1" align="center">WELCOME</p>
+    <p class="page-header"></p>
+    <!--下面是用户名输入框-->
+    <div class="input-group">
+        <span class="input-group-addon" id="basic-addon">@</span>
+        <input id="userName" type="text" class="form-control" placeholder="用户名" aria-describedby="basic-addon1">
+    </div>
+    <br>
+    <!--下面是密码输入框-->
+    <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">@</span>
+        <input id="passWord" type="text" class="form-control" placeholder="密码" aria-describedby="basic-addon1">
+    </div>
+    <br>
+    <!--下面是登陆按钮,包括颜色控制-->
+    <button type="button" style="width:280px;" class="btn btn-default">登 录</button>
 </body>
+<script type="text/javascript" src="js/jquery/jquery-3.1.1.min.js"></script>
 </html>

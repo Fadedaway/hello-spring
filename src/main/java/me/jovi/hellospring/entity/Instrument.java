@@ -13,15 +13,27 @@ public class Instrument {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
+    /**
+     * 左刀头
+     */
     @Column(name = "left_knife")
     private int leftKnife;
 
+    /**
+     * 右刀头
+     */
     @Column(name = "right_knife")
     private int rightKnife;
 
+    /**
+     * 工件状态
+     */
     @Column(name = "status")
     private int status;
 
+    /**
+     * 工件编号
+     */
     @Column(name = "number")
     private String number;
 

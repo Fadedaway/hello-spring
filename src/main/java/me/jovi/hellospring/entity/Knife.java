@@ -13,12 +13,21 @@ public class Knife {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
+    /**
+     * 刀头使用次数
+     */
     @Column(name = "time")
     private int time;
 
+    /**
+     * 刀头编号
+     */
     @Column(name = "number")
     private String number;
 
+    /**
+     * 刀头状态
+     */
     @Column(name = "status")
     private int status;
 
