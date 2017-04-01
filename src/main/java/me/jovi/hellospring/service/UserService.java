@@ -8,5 +8,7 @@ import org.springframework.stereotype.Service;
  */
 public interface UserService {
 
-    public User getUserByName();
+    User getUserByName();
+
+    boolean checkPassword(User user);
 }

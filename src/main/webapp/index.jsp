@@ -21,6 +21,12 @@
     </style>
 </head>
 <body>
+<%
+    String path = request.getContextPath();
+
+    String basePath = request.getScheme() + "://"+ request.getServerName() + ":" + request.getServerPort() + path + "/";
+
+%>
     <p class="panel-heading h1" align="center">WELCOME</p>
     <p class="page-header"></p>
     <!--下面是用户名输入框-->
@@ -32,11 +38,34 @@
     <!--下面是密码输入框-->
     <div class="input-group">
         <span class="input-group-addon" id="basic-addon1">@</span>
-        <input id="passWord" type="text" class="form-control" placeholder="密码" aria-describedby="basic-addon1">
+        <input id="password" type="text" class="form-control" placeholder="密码" aria-describedby="basic-addon1">
     </div>
     <br>
     <!--下面是登陆按钮,包括颜色控制-->
-    <button type="button" style="width:280px;" class="btn btn-default">登 录</button>
+    <button type="button" style="width:280px;" class="btn btn-default" id="loginBtn">登 录</button>
 </body>
 <script type="text/javascript" src="js/jquery/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+    var root ='<%=basePath%>';
+
+    $("#loginBtn").on('click',function () {
+        var loginName = $("#userName").val();
+        var password = $("#password").val();
+
+        $.ajax({
+            url:root+"/user/doLogin",
+            data:{"loginName":loginName,"password":password},
+            type:"POST",
+            success:function (data) {
+                if (data.success){
+                    window.location.href = root+"/hello";
+                }else{
+                    alert(data.data);
+                }
+            }
+
+        });
+    });
+
+</script>
 </html>
