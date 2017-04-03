@@ -11,4 +11,6 @@ public interface UserService {
     User getUserByName();
 
     boolean checkPassword(User user);
+
+    void addUser(User user);
 }

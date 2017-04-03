@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <title>登   录</title>
     <%
         String path = request.getContextPath();
 
@@ -34,28 +35,28 @@
                 <div class="panel-body">
                     <form role="form">
                         <hr />
-                        <h5>Enter Details to Login</h5>
+                        <h5>登  录</h5>
                         <br />
                         <div class="form-group input-group">
                             <span class="input-group-addon"><i class="fa fa-tag"  ></i></span>
-                            <input type="text" id="loginName" class="form-control" placeholder="Your Username " />
+                            <input type="text" id="loginName" class="form-control" placeholder="请输入您的登录名" />
                         </div>
                         <div class="form-group input-group">
                             <span class="input-group-addon"><i class="fa fa-lock"  ></i></span>
-                            <input type="password" id="password" class="form-control"  placeholder="Your Password" />
+                            <input type="password" id="password" class="form-control"  placeholder="请输入您的密码" />
                         </div>
                         <div class="form-group">
                             <label class="checkbox-inline">
-                                <input type="checkbox" /> Remember me
+                                <input type="checkbox" /> 记住我
                             </label>
                             <span class="pull-right">
-                                                       <a href="index.html" >Forget password ? </a>
+                                                       <a href="index.html" >忘记密码？ </a>
                                                 </span>
                         </div>
 
-                        <a href="javascript:void(0);" id="loginBtn" class="btn btn-primary ">Login Now</a>
+                        <a href="javascript:void(0);" id="loginBtn" class="btn btn-primary ">马上登录</a>
                         <hr />
-                        Not register ? <a href="index.html" >click here </a> or go to <a href="index.html">Home</a>
+                        没有账号？ <a href="<%=basePath%>user/gotoRegister" >点击此处</a> 马上 <a href="<%=basePath%>user/gotoRegister">注册</a>
                     </form>
                 </div>
 

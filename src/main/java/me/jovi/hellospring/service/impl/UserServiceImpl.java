@@ -48,4 +48,9 @@ public class UserServiceImpl implements UserService {
         }
         return false;
     }
+
+    @Override
+    public void addUser(User user) {
+        userRepo.save(user);
+    }
 }

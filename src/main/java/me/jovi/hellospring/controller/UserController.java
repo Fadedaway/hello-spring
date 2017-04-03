@@ -35,7 +35,25 @@ public class UserController {
     }
 
     @RequestMapping(value = "/main")
-    public  String toMainPage(){
+    public String toMainPage(){
         return "main";
+    }
+
+    @RequestMapping(value = "/gotoRegister")
+    public String toRegister(){
+        return "register";
+    }
+
+    @RequestMapping(value = "/doRegister")
+    @ResponseBody
+    public ReqResult doRegister(User user){
+        try{
+            userService.addUser(user);
+            return ReqResult.success("注册成功！");
+        }catch (Exception e){
+            LOGGER.error("注册失败："+e.getMessage());
+            return ReqResult.failure("注册失败："+e.getMessage());
+        }
+
     }
 }
