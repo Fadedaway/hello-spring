@@ -67,6 +67,7 @@
         </div>
     </div>
 
+
     <hr>
     <footer>
         <p>© ThinkingInGIS 2016</p>
