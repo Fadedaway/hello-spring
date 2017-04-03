@@ -53,12 +53,12 @@
         var password = $("#password").val();
 
         $.ajax({
-            url:root+"/user/doLogin",
+            url:root+"user/doLogin",
             data:{"loginName":loginName,"password":password},
             type:"POST",
             success:function (data) {
                 if (data.success){
-                    window.location.href = root+"/hello";
+                    window.location.href = root+"user/main";
                 }else{
                     alert(data.data);
                 }

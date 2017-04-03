@@ -33,4 +33,9 @@ public class UserController {
             return ReqResult.failure("登录失败！");
         }
     }
+
+    @RequestMapping(value = "/main")
+    public  String toMainPage(){
+        return "main";
+    }
 }

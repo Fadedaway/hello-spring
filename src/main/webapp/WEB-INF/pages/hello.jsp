@@ -8,17 +8,17 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <%
+        String path = request.getContextPath();
+
+        String basePath = request.getScheme() + "://"+ request.getServerName() + ":" + request.getServerPort() + path + "/";
+    %>
     <title>Title</title>
-    <link href="/css/bootstrap.css" rel="stylesheet"/>
-    <link href="/css/bootstrap-theme.css" rel="stylesheet"/>
+    <link href="<%=basePath%>css/bootstrap.css" rel="stylesheet"/>
+    <link href="<%=basePath%>css/bootstrap-theme.css" rel="stylesheet"/>
 </head>
 <body>
-<%
-    String path = request.getContextPath();
 
-    String basePath = request.getScheme() + "://"+ request.getServerName() + ":" + request.getServerPort() + path + "/";
-
-%>
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -76,7 +76,7 @@
 <script>
     var root ='<%=basePath%>';
 </script>
-<script type="text/javascript" src="js/jquery/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="<%=basePath%>js/jquery/jquery-3.1.1.min.js"></script>
 <script>
     //$('#test').val("测试");
    /* $.ajax({
