@@ -37,6 +37,10 @@ public class UserServiceImpl implements UserService {
             StringBuffer sql = new StringBuffer("select * from t_user where ");
             sql.append("login_name = :loginName ");
             Query query = entityManager.createNativeQuery(sql.toString(),User.class).setParameter("loginName", user.getLoginName());
+
+            if(query.getResultList().size()==0 ){
+                return false;
+            }
             User dbUser = (User) query.getSingleResult();
 
             if (dbUser != null && dbUser.getPassword().equalsIgnoreCase(user.getPassword())){

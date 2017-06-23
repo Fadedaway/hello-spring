@@ -9,23 +9,13 @@
 <html>
 <head>
     <title>登   录</title>
-    <%
-        String path = request.getContextPath();
-
-        String basePath = request.getScheme() + "://"+ request.getServerName() + ":" + request.getServerPort() + path + "/";
-    %>
-    <!-- BOOTSTRAP STYLES-->
-    <link href="<%=basePath%>css/bootstrap.css" rel="stylesheet" />
-    <!-- FONTAWESOME STYLES-->
-    <link href="<%=basePath%>css/font-awesome.css" rel="stylesheet" />
-    <!-- GOOGLE FONTS
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />-->
 </head>
-<body style="background-color: #E2E2E2;">
+<%@include file="WEB-INF/pages/include.jsp"%>
+<body style="background-color: #FFFFFF;">
     <div class="container">
         <div class="row text-center " style="padding-top:100px;">
             <div class="col-md-12">
-                <img src="<%=basePath%>img/logo-invoice.png" />
+                <img src="<%=basePath%>img/Logo.gif" />
             </div>
         </div>
         <div class="row ">
@@ -50,8 +40,8 @@
                                 <input type="checkbox" /> 记住我
                             </label>
                             <span class="pull-right">
-                                                       <a href="index.html" >忘记密码？ </a>
-                                                </span>
+                                   <a href="index.html" >忘记密码？ </a>
+                            </span>
                         </div>
 
                         <a href="javascript:void(0);" id="loginBtn" class="btn btn-primary ">马上登录</a>
@@ -65,7 +55,6 @@
         </div>
     </div>
 </body>
-<script src="<%=basePath%>js/jquery/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
     var root = '<%=basePath%>';
 
@@ -81,7 +70,7 @@
                 if (data.success){
                     window.location.href = root + "user/main";
                 }else{
-                    alert(data.data);
+                    alertTool.error(data.data);
                 }
             }
         });

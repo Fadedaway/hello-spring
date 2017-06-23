@@ -9,21 +9,13 @@
 <html>
 <head>
     <title>注  册</title>
-    <%
-        String path = request.getContextPath();
-
-        String basePath = request.getScheme() + "://"+ request.getServerName() + ":" + request.getServerPort() + path + "/";
-    %>
-    <!-- BOOTSTRAP STYLES-->
-    <link href="<%=basePath%>css/bootstrap.css" rel="stylesheet" />
-    <!-- FONTAWESOME STYLES-->
-    <link href="<%=basePath%>css/font-awesome.css" rel="stylesheet" />
 </head>
+<%@include file="include.jsp"%>
 <body>
     <div class="container">
         <div class="row text-center " style="padding-top:100px;">
             <div class="col-md-12">
-                <img src="<%=basePath%>img/logo-invoice.png" />
+                <img src="<%=basePath%>img/Logo.gif" />
             </div>
         </div>
         <div class="row">
@@ -78,8 +70,6 @@
         </div>
     </div>
 </body>
-<script src="<%=basePath%>js/jquery/jquery-3.1.1.min.js"></script>
-<script src="<%=basePath%>js/jquery/jquery.validate.js"></script>
 <script type="text/javascript">
 var root = '<%=basePath%>';
 var registerForm = $("#registerForm");
@@ -155,7 +145,7 @@ $("#registerBtn").on('click',function () {
     $("#registerBtn").attr("disabled","disabled");
 
     if (!registerForm.valid()){ //验证不通过
-        $("#registerBtn").remove("disabled");
+        $("#registerBtn").removeAttr("disabled");
         return false;
     }
 
@@ -164,9 +154,12 @@ $("#registerBtn").on('click',function () {
         data:registerForm.serialize(),
         type:"POST",
         success:function (data) {
-            alert(data.data);
+            $("#registerBtn").removeAttr("disabled");
             if (data.success){
+                alertTool.info(data.data);
                 setTimeout(window.location.href = root,3500);
+            }else{
+                alertTool.error(data.data);
             }
         }
     });
