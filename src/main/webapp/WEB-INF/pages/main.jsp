@@ -7,20 +7,10 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<%
-    String path = request.getContextPath();
-    String basePath = request.getScheme() + "://"+ request.getServerName() + ":" + request.getServerPort() + path + "/";
-%>
-<!-- BOOTSTRAP STYLES-->
-<link href="<%=basePath%>css/bootstrap.css" rel="stylesheet" />
-<!-- FONTAWESOME STYLES-->
-<link href="<%=basePath%>css/font-awesome.css" rel="stylesheet" />
-<!--CUSTOM BASIC STYLES-->
-<link href="<%=basePath%>css/basic.css" rel="stylesheet" />
-<!--CUSTOM MAIN STYLES-->
-<link href="<%=basePath%>css/custom.css" rel="stylesheet" />
-<!-- GOOGLE FONTS-->
-<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+<head>
+    <title>Shortcut Technologies</title>
+</head>
+<%@include file="include.jsp"%>
 <body>
     <div id="wrapper">
         <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
@@ -59,7 +49,7 @@
 
                     </li>--%>
                     <li>
-                        <a class="active-menu" href="index.html"><i class="fa fa-dashboard "></i>Dashboard</a>
+                        <a class="active-menu" href="<%=basePath%>user/main"><i class="fa fa-dashboard "></i>Dashboard</a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-desktop "></i>UI Elements <span class="fa arrow"></span></a>
@@ -641,12 +631,4 @@
     <!-- /. WRAPPER  -->
 
 </body>
-<!-- JQUERY SCRIPTS -->
-<script src="<%=basePath%>js/jquery/jquery-3.1.1.min.js"></script>
-<!-- BOOTSTRAP SCRIPTS -->
-<script src="<%=basePath%>js/bootstrap/bootstrap.js"></script>
-<!-- METISMENU SCRIPTS -->
-<script src="<%=basePath%>js/jquery.metisMenu.js"></script>
-<!-- CUSTOM SCRIPTS -->
-<script src="<%=basePath%>js/custom.js"></script>
 </html>

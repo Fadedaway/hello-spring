@@ -12,11 +12,12 @@
 
     String basePath = request.getScheme() + "://"+ request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
-<!-- BOOTSTRAP STYLES-->
 <link href="<%=basePath%>css/bootstrap.css" rel="stylesheet" />
-<!-- FONTAWESOME STYLES-->
 <link href="<%=basePath%>css/font-awesome.css" rel="stylesheet" />
 <link href="<%=basePath%>css/jquery.toast.min.css" rel="stylesheet"/>
+<link href="<%=basePath%>css/basic.css" rel="stylesheet" />
+<link href="<%=basePath%>css/custom.css" rel="stylesheet" />
+
 <link rel="shortcut icon" href="<%=basePath%>img/favicon.ico"/>
 <link rel="bookmark" href="<%=basePath%>img/favicon.ico"/>
 
@@ -24,3 +25,6 @@
 <script src="<%=basePath%>js/jquery/jquery.validate.js"></script>
 <script src="<%=basePath%>js/toast/alertTool.js"></script>
 <script src="<%=basePath%>js/toast/jquery.toast.min.js"></script>
+<script src="<%=basePath%>js/bootstrap/bootstrap.js"></script>
+<script src="<%=basePath%>js/jquery.metisMenu.js"></script>
+<script src="<%=basePath%>js/custom.js"></script>
