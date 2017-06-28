@@ -52,10 +52,10 @@
                         <a class="active-menu" href="<%=basePath%>user/main"><i class="fa fa-dashboard "></i>Dashboard</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-desktop "></i>UI Elements <span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-desktop "></i>系统管理<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="javascript:void(0);" url="<%=basePath%>user/gotoRegister" onclick="jumpToRight(this);"><i class="fa fa-toggle-on"></i>Tabs & Panels</a>
+                                <a href="javascript:void(0);" url="<%=basePath%>/config/role" onclick="jumpToRight(this);"><i class="fa fa-toggle-on"></i>角色管理</a>
                             </li>
                             <li>
                                 <a href="notification.html"><i class="fa fa-bell "></i>Notifications</a>
@@ -181,6 +181,10 @@
 var jumpToRight = function (event) {
     var url = $(event).attr("url");
 
+    $("#page-inner").load(url);
+}
+
+var loadUrl = function (url) {
     $("#page-inner").load(url);
 }
 </script>
