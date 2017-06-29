@@ -1,5 +1,7 @@
 package me.jovi.hellospring.entity;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 
 /**
@@ -10,8 +12,9 @@ import javax.persistence.*;
 public class Knife {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    private String id;
 
     /**
      * 刀头使用次数
@@ -31,11 +34,11 @@ public class Knife {
     @Column(name = "status")
     private int status;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

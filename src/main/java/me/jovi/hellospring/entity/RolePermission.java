@@ -1,5 +1,7 @@
 package me.jovi.hellospring.entity;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 
 /**
@@ -10,8 +12,9 @@ import javax.persistence.*;
 public class RolePermission {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    private String id;
 
     @Column(name = "role_id")
     private int roleId;
@@ -19,11 +22,11 @@ public class RolePermission {
     @Column(name = "permission_id")
     private int permissionId;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

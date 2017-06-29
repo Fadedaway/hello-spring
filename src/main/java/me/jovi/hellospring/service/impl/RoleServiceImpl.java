@@ -33,4 +33,27 @@ public class RoleServiceImpl implements RoleService {
     public void addRole(Role role) {
         roleRepo.save(role);
     }
+
+    @Override
+    public void deleteRoleById(String id) {
+        Role role = roleRepo.findOne(id);
+
+        if (null != role)
+            roleRepo.delete(role);
+    }
+
+    @Override
+    public void editRole(Role role) {
+        Role oldRole = roleRepo.findOne(role.getId());
+
+        oldRole.setDescription(role.getDescription());
+        oldRole.setRoleName(role.getRoleName());
+
+        roleRepo.saveAndFlush(oldRole);
+    }
+
+    @Override
+    public Role getRoleById(String id) {
+        return roleRepo.findOne(id);
+    }
 }

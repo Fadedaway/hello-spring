@@ -12,4 +12,10 @@ public interface RoleService {
     List<Role> getRoleList();
 
     void addRole(Role role);
+
+    void deleteRoleById(String id);
+
+    void editRole(Role role);
+
+    Role getRoleById(String id);
 }

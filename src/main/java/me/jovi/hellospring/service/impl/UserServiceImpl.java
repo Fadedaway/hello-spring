@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUserByName() {
 
-        return userRepo.getOne(1);
+        return userRepo.getOne("1");
     }
 
     @Override

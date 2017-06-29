@@ -68,10 +68,39 @@
         }
 
         for (var ob in content){
-            _html += "<tr><td>"+(parseInt(ob)+1)+"</td><td>"+content[ob].roleName+"</td><td>"+content[ob].description+"</td><td></td></tr>";
+            var _deleteHtml = "<a href='javascript:void(0);' data="+content[ob].id+" onclick='deleteRole(this);'>删除</a>";
+            var _detailHtml = "<a href='javascript:void(0);' data="+content[ob].id+" onclick='viewRole(this);'>详情</a>";
+            var _editHtml = "<a href='javascript:void(0);' data="+content[ob].id+" onclick='editRole(this);'>编辑</a>";
+            _html += "<tr><td>"+(parseInt(ob)+1)+"</td><td>"+content[ob].roleName+"</td><td>"+content[ob].description+"</td><td>"+_deleteHtml+" "+_detailHtml+" "+_editHtml+"</td></tr>";
         }
 
         $(".table-responsive").find("tbody").html(_html);
+    }
+
+    var deleteRole = function (event) {
+        var id = $(event).attr("data");
+
+        $.ajax({
+            url :  "<%=basePath%>config/role/deleteRoleById",
+            data:{"id":id},
+            type:"POST",
+            success:function () {
+                alertTool.success("删除成功！");
+                setTimeout(loadUrl("<%=basePath%>config/role"),2500);
+            }
+        });
+    }
+
+    var editRole = function (event) {
+        var id = $(event).attr("data");
+
+        loadUrl("<%=basePath%>config/role/editRole?id="+id)
+    }
+
+    var viewRole = function (event) {
+        var id = $(event).attr("data");
+
+        loadUrl("<%=basePath%>config/role/viewRole?id="+id)
     }
 
     $("#addBtn").on('click',function () {
