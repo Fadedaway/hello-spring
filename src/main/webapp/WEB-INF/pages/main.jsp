@@ -168,7 +168,7 @@
         <!-- /. NAV SIDE  -->
         <div id="page-wrapper">
             <div id="page-inner">
-
+                <label>Welcome!</label>
             </div>
             <!-- /. PAGE INNER  -->
         </div>
