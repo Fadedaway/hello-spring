@@ -12,7 +12,7 @@
 </head>
 <%@include file="../../include.jsp"%>
 <body>
-    <div class="row" style="margin-left: 5%">
+<div class="row" style="margin-left: 5%">
     <div class="col-md-11">
         <!--   Kitchen Sink -->
         <div class="panel panel-default">
