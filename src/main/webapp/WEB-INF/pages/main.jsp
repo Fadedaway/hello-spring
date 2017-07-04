@@ -58,7 +58,7 @@
                                 <a href="javascript:void(0);" url="<%=basePath%>/config/role" onclick="jumpToRight(this);"><i class="fa fa-toggle-on"></i>角色管理</a>
                             </li>
                             <li>
-                                <a href="notification.html"><i class="fa fa-bell "></i>Notifications</a>
+                                <a href="javascript:void(0);" url="<%=basePath%>/config/permission" onclick="jumpToRight(this);"><i class="fa fa-bell "></i>许可管理</a>
                             </li>
                             <li>
                                 <a href="progress.html"><i class="fa fa-circle-o "></i>Progressbars</a>

@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>角色详情</title>
+    <title>许可详情</title>
 </head>
 <%@include file="../../include.jsp"%>
 <body>
@@ -17,16 +17,16 @@
     <div class="col-md-11 col-sm-6 col-xs-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                角色详情
+                许可详情
             </div>
             <div class="panel-body">
-                <form role="form" id="roleForm">
+                <form role="form" id="permissionForm">
                     <div class="form-group">
-                        <label>角色名称</label>
-                        <input class="form-control" type="text" name="roleName" id="roleName" readonly />
+                        <label>许可名称</label>
+                        <input class="form-control" type="text" name="permissionName" id="permissionName" readonly />
                     </div>
                     <div class="form-group">
-                        <label>角色描述</label>
+                        <label>许可描述</label>
                         <input class="form-control" type="text" name="description" id="description" readonly />
                     </div>
 
@@ -43,7 +43,7 @@
     var id = '${id}';
 
     $("#backBtn").on('click',function () {
-        loadUrl("<%=basePath%>config/role");
+        loadUrl("<%=basePath%>config/permission");
     });
 
     var initData = function () {
@@ -52,12 +52,12 @@
         }
 
         $.ajax({
-           url:"<%=basePath%>config/role/getRoleById",
+           url:"<%=basePath%>config/permission/getPermissionById",
             data:{"id":id},
             type:"GET",
             success:function (data) {
                 if (data.success){
-                    $("#roleName").val(data.data.roleName);
+                    $("#permissionName").val(data.data.permissionName);
                     $("#description").val(data.data.description);
                 }
             }

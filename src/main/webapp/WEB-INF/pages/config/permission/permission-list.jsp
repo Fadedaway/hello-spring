@@ -50,7 +50,7 @@
 <script type="text/javascript">
     var initPage = function () {
         $.ajax({
-            url: "<%=basePath%>config/role/getRoleList",
+            url: "<%=basePath%>config/permission/getPermissionList",
             success:function (data) {
                 if (data.success){
                     installData(data);
@@ -71,7 +71,7 @@
             var _deleteHtml = "<a href='javascript:void(0);' data="+content[ob].id+" onclick='deleteRole(this);'>删除</a>";
             var _detailHtml = "<a href='javascript:void(0);' data="+content[ob].id+" onclick='viewRole(this);'>详情</a>";
             var _editHtml = "<a href='javascript:void(0);' data="+content[ob].id+" onclick='editRole(this);'>编辑</a>";
-            _html += "<tr><td>"+(parseInt(ob)+1)+"</td><td>"+content[ob].roleName+"</td><td>"+content[ob].description+"</td><td>"+_deleteHtml+" "+_detailHtml+" "+_editHtml+"</td></tr>";
+            _html += "<tr><td>"+(parseInt(ob)+1)+"</td><td>"+content[ob].permissionName+"</td><td>"+content[ob].description+"</td><td>"+_deleteHtml+" "+_detailHtml+" "+_editHtml+"</td></tr>";
         }
 
         $(".table-responsive").find("tbody").html(_html);
@@ -81,12 +81,12 @@
         var id = $(event).attr("data");
 
         $.ajax({
-            url :  "<%=basePath%>config/role/deleteRoleById",
+            url :  "<%=basePath%>config/permission/deletePermissionById",
             data:{"id":id},
             type:"POST",
             success:function () {
                 alertTool.success("删除成功！");
-                setTimeout(loadUrl("<%=basePath%>config/role"),2500);
+                setTimeout(loadUrl("<%=basePath%>config/permission"),2500);
             }
         });
     }
@@ -94,17 +94,17 @@
     var editRole = function (event) {
         var id = $(event).attr("data");
 
-        loadUrl("<%=basePath%>config/role/editRole?id="+id)
+        loadUrl("<%=basePath%>config/permission/editPermission?id="+id)
     }
 
     var viewRole = function (event) {
         var id = $(event).attr("data");
 
-        loadUrl("<%=basePath%>config/role/viewRole?id="+id)
+        loadUrl("<%=basePath%>config/permission/viewPermission?id="+id)
     }
 
     $("#addBtn").on('click',function () {
-        loadUrl("<%=basePath%>config/role/addRole");
+        loadUrl("<%=basePath%>config/permission/addPermission");
     });
 
     $(document).ready(function () {
