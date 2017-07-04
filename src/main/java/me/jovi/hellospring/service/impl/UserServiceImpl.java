@@ -11,6 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import java.util.List;
 
 /**
  * Created by joyce on 2017/3/18.
@@ -56,5 +57,24 @@ public class UserServiceImpl implements UserService {
     @Override
     public void addUser(User user) {
         userRepo.save(user);
+    }
+
+    @Override
+    public List<User> getUserList() {
+        return userRepo.findAll();
+    }
+
+    @Override
+    public void deleteUserById(String id) {
+        User user = userRepo.findOne(id);
+
+        if (null != user){
+            userRepo.delete(user);
+        }
+    }
+
+    @Override
+    public User getUserById(String id) {
+        return userRepo.findOne(id);
     }
 }

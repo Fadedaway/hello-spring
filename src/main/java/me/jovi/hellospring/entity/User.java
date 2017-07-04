@@ -25,6 +25,9 @@ public class User {
     @Column(name = "sex")
     private int sex;
 
+    @Transient
+    private String sexStr;
+
     @Column(name = "login_name")
     private String loginName;
 
@@ -61,6 +64,18 @@ public class User {
 
     public void setSex(int sex) {
         this.sex = sex;
+    }
+
+    public String getSexStr() {
+        if (sex == 0){
+            return "女";
+        }else{
+            return "男";
+        }
+    }
+
+    public void setSexStr(String sexStr) {
+        this.sexStr = sexStr;
     }
 
     public String getLoginName() {
