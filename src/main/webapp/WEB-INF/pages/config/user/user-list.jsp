@@ -69,16 +69,16 @@
         }
 
         for (var ob in content){
-            var _deleteHtml = "<a href='javascript:void(0);' data="+content[ob].id+" onclick='deleteRole(this);'>删除</a>";
-            var _detailHtml = "<a href='javascript:void(0);' data="+content[ob].id+" onclick='viewRole(this);'>详情</a>";
-            var _editHtml = "<a href='javascript:void(0);' data="+content[ob].id+" onclick='editRole(this);'>授权</a>";
+            var _deleteHtml = "<a href='javascript:void(0);' data="+content[ob].id+" onclick='deleteUser(this);'>删除</a>";
+            var _detailHtml = "<a href='javascript:void(0);' data="+content[ob].id+" onclick='viewUser(this);'>详情</a>";
+            var _editHtml = "<a href='javascript:void(0);' data="+content[ob].id+" onclick='authUser(this);'>授权</a>";
             _html += "<tr><td>"+(parseInt(ob)+1)+"</td><td>"+content[ob].name+"</td><td>"+content[ob].age+"</td><td>"+content[ob].sexStr+"</td><td>"+_deleteHtml+" "+_detailHtml+" "+_editHtml+"</td></tr>";
         }
 
         $(".table-responsive").find("tbody").html(_html);
     }
 
-    var deleteRole = function (event) {
+    var deleteUser = function (event) {
         var id = $(event).attr("data");
 
         $.ajax({
@@ -92,13 +92,13 @@
         });
     }
 
-    var editRole = function (event) {
+    var authUser = function (event) {
         var id = $(event).attr("data");
 
-        loadUrl("<%=basePath%>config/user/editUser?id="+id)
+        loadUrl("<%=basePath%>config/user/authUser?id="+id)
     }
 
-    var viewRole = function (event) {
+    var viewUser = function (event) {
         var id = $(event).attr("data");
 
         loadUrl("<%=basePath%>config/user/viewUser?id="+id)

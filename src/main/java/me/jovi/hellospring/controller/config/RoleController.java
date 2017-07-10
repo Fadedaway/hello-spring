@@ -84,4 +84,10 @@ public class RoleController {
         mav.addObject("id", id);
         return mav;
     }
+
+    @RequestMapping(value = "/getRoleWithAuthStatus", method = RequestMethod.GET)
+    @ResponseBody
+    public ReqResult<?> getRoleWithAuthStatus(String userId){
+        return ReqResult.success(roleService.getRoleWithAuthStatus(userId));
+    }
 }

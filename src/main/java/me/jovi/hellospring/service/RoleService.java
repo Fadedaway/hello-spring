@@ -1,6 +1,7 @@
 package me.jovi.hellospring.service;
 
 import me.jovi.hellospring.entity.Role;
+import me.jovi.hellospring.entity.vo.RoleVO;
 
 import java.util.List;
 
@@ -18,4 +19,6 @@ public interface RoleService {
     void editRole(Role role);
 
     Role getRoleById(String id);
+
+    List<RoleVO> getRoleWithAuthStatus(String userId);
 }

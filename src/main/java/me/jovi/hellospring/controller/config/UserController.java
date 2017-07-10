@@ -43,10 +43,16 @@ public class UserController {
         return ReqResult.success(userService.getUserById(id));
     }
 
-    @RequestMapping(value = "/viewUser")
-    @ResponseBody
+    @RequestMapping(value = "/viewUser", method = RequestMethod.GET)
     public ModelAndView viewUser(String id){
         ModelAndView mav = new ModelAndView("config/user/user-view");
+        mav.addObject("id", id);
+        return mav;
+    }
+
+    @RequestMapping(value = "/authUser", method = RequestMethod.GET)
+    public ModelAndView authUser(String id){
+        ModelAndView mav = new ModelAndView("config/user/user-auth-list");
         mav.addObject("id", id);
         return mav;
     }

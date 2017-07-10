@@ -1,6 +1,7 @@
 package me.jovi.hellospring.service.impl;
 
 import me.jovi.hellospring.entity.Role;
+import me.jovi.hellospring.entity.vo.RoleVO;
 import me.jovi.hellospring.repositoryies.RoleRepo;
 import me.jovi.hellospring.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import java.util.List;
 
 /**
@@ -55,5 +57,20 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public Role getRoleById(String id) {
         return roleRepo.findOne(id);
+    }
+
+    @Override
+    public List<RoleVO> getRoleWithAuthStatus(String userId) {
+        StringBuilder sql = new StringBuilder("select a.id as id,a.description as description,a.role_name as role_name,'IN' as role_status ");
+        sql.append("from t_role a ");
+        sql.append("where exists (select b.role_id as id from t_user_role b where b.user_id = :userId and a.id = b.role_id) ");
+        sql.append("union all ");
+        sql.append("select a.id as id,a.description as description,a.role_name as role_name,'OUT' as role_status ");
+        sql.append("from t_role a ");
+        sql.append("where not exists (select b.role_id as id from t_user_role b where b.user_id = :userId and a.id = b.role_id) ");
+
+        Query query = entityManager.createNativeQuery(sql.toString(),RoleVO.class).setParameter("userId", userId);
+
+        return query.getResultList();
     }
 }

@@ -19,9 +19,10 @@
             <div class="panel-heading">
                 用户授权
             </div>
-           <%-- <div class="panel-body">
-                <button type="button" class="btn btn-success" id="addBtn">新增</button>
-            </div>--%>
+           <div class="panel-body">
+               <button type="button" class="btn btn-info" id="submitBtn">提 交</button>
+               <button type="button" class="btn btn-default" id="backBtn">返 回</button>
+            </div>
             <div class="panel-body">
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered table-hover">
@@ -30,12 +31,11 @@
                             <th><input type="checkbox" id="fetchAll();"></th>
                             <th>角色名称</th>
                             <th>角色描述</th>
-                            <th>操作</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
-                            <td colspan="4" align="center">没有查询到结果</td>
+                            <td colspan="3" align="center">没有查询到结果</td>
                         </tr>
                         </tbody>
                     </table>
@@ -48,7 +48,8 @@
 </body>
 </html>
 <script type="text/javascript">
-    var initPage = function () {
+    var id = '${id}';
+/*    var initPage = function () {
         $.ajax({
             url: "<%=basePath%>config/user/getUserList",
             success:function (data) {
@@ -106,6 +107,46 @@
     $("#addBtn").on('click',function () {
         loadUrl("<%=basePath%>config/user/addUser");
     });
+
+    $(document).ready(function () {
+        initPage();
+    });*/
+
+    $("#backBtn").on('click',function () {
+       loadUrl("<%=basePath%>config/user");
+    });
+
+    var initPage = function () {
+        $.ajax({
+            url: "<%=basePath%>config/role/getRoleWithAuthStatus",
+            data:{"userId":id},
+            success:function (data) {
+                if (data.success){
+                    installData(data);
+                }
+            }
+        });
+    }
+
+    var installData = function (data) {
+        var content = data.data;
+
+        var _html = "";
+        if (content.length == 0){
+            _html += "<tr><td colspan='3' align='center'>没有查询到结果</td></tr>";
+        }
+
+        for (var ob in content){
+            if ("IN" == content[ob].roleStatus){
+                _html += "<tr><td><input type='checkbox' name='selection' value='"+content[ob].id+"' checked></td>";
+            }else{
+                _html += "<tr><td><input type='checkbox' name='selection' value='"+content[ob].id+"'></td>";
+            }
+            _html += "<td>"+content[ob].roleName+"</td><td>"+content[ob].description+"</td></tr>";
+        }
+
+        $(".table-responsive").find("tbody").html(_html);
+    }
 
     $(document).ready(function () {
         initPage();
