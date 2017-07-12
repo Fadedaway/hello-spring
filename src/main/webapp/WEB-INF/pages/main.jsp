@@ -181,7 +181,7 @@
 var jumpToRight = function (event) {
     var url = $(event).attr("url");
 
-    $("#page-inner").load(url);
+    loadUrl(url);
 }
 
 var loadUrl = function (url) {

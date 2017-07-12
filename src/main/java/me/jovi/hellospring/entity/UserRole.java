@@ -17,10 +17,10 @@ public class UserRole {
     private String id;
 
     @Column(name = "user_id")
-    private int userId;
+    private String userId;
 
     @Column(name = "role_id")
-    private int roleId;
+    private String roleId;
 
     public String getId() {
         return id;
@@ -30,19 +30,19 @@ public class UserRole {
         this.id = id;
     }
 
-    public int getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
-    public int getRoleId() {
+    public String getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(int roleId) {
+    public void setRoleId(String roleId) {
         this.roleId = roleId;
     }
 }

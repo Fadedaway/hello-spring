@@ -3,13 +3,16 @@ package me.jovi.hellospring.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by joyce on 2017/6/23.
  */
 @Entity
 @Table(name = "t_role")
-public class Role {
+public class Role implements Serializable{
+
+    private static final long serialVersionUID = -1635641545106725692L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "uuid")
@@ -21,6 +24,9 @@ public class Role {
 
     @Column(name = "description")
     private String description;
+
+    @Transient
+    private String roleStatus;
 
     public String getId() {
         return id;
@@ -44,5 +50,13 @@ public class Role {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getRoleStatus() {
+        return roleStatus;
+    }
+
+    public void setRoleStatus(String roleStatus) {
+        this.roleStatus = roleStatus;
     }
 }

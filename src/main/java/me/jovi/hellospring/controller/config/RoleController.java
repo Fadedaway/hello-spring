@@ -3,16 +3,14 @@ package me.jovi.hellospring.controller.config;
 import me.jovi.hellospring.entity.ReqResult;
 import me.jovi.hellospring.entity.Role;
 import me.jovi.hellospring.service.RoleService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by joyce on 2017/6/28.
@@ -20,6 +18,8 @@ import java.util.Map;
 @Controller
 @RequestMapping(value = "/config/role")
 public class RoleController {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(RoleController.class);
 
     @Autowired
     private RoleService roleService;
@@ -89,5 +89,30 @@ public class RoleController {
     @ResponseBody
     public ReqResult<?> getRoleWithAuthStatus(String userId){
         return ReqResult.success(roleService.getRoleWithAuthStatus(userId));
+    }
+
+    @RequestMapping(value = "/authRole", method = RequestMethod.POST)
+    @ResponseBody
+    public ReqResult<?> authRole(String ids, String userId){
+        try{
+            roleService.authRole(ids,userId);
+            return ReqResult.success("授权成功！");
+        }catch (Exception e){
+            LOGGER.error(e.getMessage(), e);
+            return ReqResult.failure("授权失败！");
+        }
+    }
+
+    /**
+     * 跳转至分配许可页面
+     * @param id
+     * @return
+     * @author jovi
+     */
+    @RequestMapping(value = "/authPermission", method = RequestMethod.GET)
+    public ModelAndView authPermission(String id){
+        ModelAndView mav = new ModelAndView("config/role/role-auth-list");
+        mav.addObject("id",id);
+        return mav;
     }
 }

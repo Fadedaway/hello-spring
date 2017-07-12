@@ -17,10 +17,10 @@ public class RolePermission {
     private String id;
 
     @Column(name = "role_id")
-    private int roleId;
+    private String roleId;
 
     @Column(name = "permission_id")
-    private int permissionId;
+    private String permissionId;
 
     public String getId() {
         return id;
@@ -30,19 +30,19 @@ public class RolePermission {
         this.id = id;
     }
 
-    public int getRoleId() {
+    public String getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(int roleId) {
+    public void setRoleId(String roleId) {
         this.roleId = roleId;
     }
 
-    public int getPermissionId() {
+    public String getPermissionId() {
         return permissionId;
     }
 
-    public void setPermissionId(int permissionId) {
+    public void setPermissionId(String permissionId) {
         this.permissionId = permissionId;
     }
 }

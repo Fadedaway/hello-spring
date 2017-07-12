@@ -71,7 +71,8 @@
             var _deleteHtml = "<a href='javascript:void(0);' data="+content[ob].id+" onclick='deleteRole(this);'>删除</a>";
             var _detailHtml = "<a href='javascript:void(0);' data="+content[ob].id+" onclick='viewRole(this);'>详情</a>";
             var _editHtml = "<a href='javascript:void(0);' data="+content[ob].id+" onclick='editRole(this);'>编辑</a>";
-            _html += "<tr><td>"+(parseInt(ob)+1)+"</td><td>"+content[ob].roleName+"</td><td>"+content[ob].description+"</td><td>"+_deleteHtml+" "+_detailHtml+" "+_editHtml+"</td></tr>";
+            var _authHtml = "<a href='javascript:void(0);' data="+content[ob].id+" onclick='authPermission(this);'>分配许可</a>";
+            _html += "<tr><td>"+(parseInt(ob)+1)+"</td><td>"+content[ob].roleName+"</td><td>"+content[ob].description+"</td><td>"+_deleteHtml+" "+_detailHtml+" "+_editHtml+" "+_authHtml+"</td></tr>";
         }
 
         $(".table-responsive").find("tbody").html(_html);
@@ -101,6 +102,12 @@
         var id = $(event).attr("data");
 
         loadUrl("<%=basePath%>config/role/viewRole?id="+id)
+    }
+
+    var authPermission = function (event) {
+        var id = $(event).attr("data");
+
+        loadUrl("<%=basePath%>config/role/authPermission?id="+id);
     }
 
     $("#addBtn").on('click',function () {
