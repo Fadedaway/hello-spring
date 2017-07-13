@@ -8,10 +8,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by joyce on 2017/3/18.
@@ -76,5 +78,32 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUserById(String id) {
         return userRepo.findOne(id);
+    }
+
+    @Override
+    public User getUserByLoginName(String loginName) {
+        return userRepo.getUserByLoginName(loginName);
+    }
+
+    @Override
+    public Set<String> findRoles(String loginName) {
+        Set<String> roles = new HashSet<>();
+
+        StringBuilder sql = new StringBuilder("select _role.role_name as roleName ");
+        sql.append("from t_user_role _user_role ");
+        sql.append("join t_user _user on _user_role.user_id = _user.id and _user.login_name = :loginName ");
+        sql.append("left join t_role _role on _user_role.role_id = _role.id ");
+
+        Query query = entityManager.createNativeQuery(sql.toString()).setParameter("loginName", loginName);
+
+        List result = query.getResultList();
+        if (result!=null) {
+            Iterator iterator = result.iterator();
+
+            while (iterator.hasNext()){
+                roles.add(String.valueOf(iterator.next()));
+            }
+        }
+        return roles;
     }
 }

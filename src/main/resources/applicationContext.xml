@@ -14,6 +14,8 @@
 
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="securityManager"/>
+        <property name="loginUrl" value="/login.jsp"/>
+        <property name="unauthorizedUrl" value="/error/unauthorized"/>
         <!-- override these for application-specific URLs if you like:
         <property name="loginUrl" value="/login.jsp"/>
         <property name="successUrl" value="/home.jsp"/>
@@ -29,9 +31,12 @@
         <property name="filterChainDefinitions">
             <value>
                 # some example chain definitions:
-                /admin/** = authc, roles[admin]
-                /docs/** = authc, perms[document:read]
-                /** = authc
+                /user/main = anon
+                /config/**/** = authc,roles[admin]
+                /images/** = anon
+                /css/** = anon
+                /js/** = anon
+                /logout = logout
                 # more URL-to-FilterChain definitions here
             </value>
         </property>
