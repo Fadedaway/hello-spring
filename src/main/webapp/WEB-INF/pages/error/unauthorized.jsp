@@ -9,8 +9,23 @@
 <html>
 <head>
     <title>没有访问权限</title>
+    <%@include file="../include.jsp"%>
+    <link href="<%=basePath%>css/error.css" rel="stylesheet" />
 </head>
 <body>
-没有权限sad！
+<div class="container">
+
+    <div class="row text-center">
+
+        <div class="col-md-12 set-pad" >
+
+            <strong class="error-txt">ERROR ! 401</strong>
+            <p class="p-err">Sorry!您没有访问该页面的权限！</p>
+            <a href="javascript:window.history.back();" class="btn btn-danger" ><i class="fa fa-mail-reply"></i>&nbsp;PLEASE GO BACK</a>
+        </div>
+
+
+    </div>
+</div>
 </body>
 </html>

@@ -16,6 +16,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * Created by joyce on 2017/4/1.
  */
@@ -30,14 +32,14 @@ public class LoginController {
 
     @RequestMapping(value = "/doLogin")
     @ResponseBody
-    public ReqResult doLogin(User user){
+    public ReqResult doLogin(User user, HttpServletRequest request){
         //boolean result = userService.checkPassword(user);
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(user.getLoginName(), user.getPassword());
 
         try {
             subject.login(token);
-
+            request.getSession().setAttribute("loginUser", userService.getUserByLoginName(user.getLoginName()));
             return ReqResult.success("登录成功");
         } catch (UnknownAccountException ue) {
             return ReqResult.failure("用户名/密码错误");

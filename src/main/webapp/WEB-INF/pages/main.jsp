@@ -1,4 +1,4 @@
-<%--
+<%@ page import="me.jovi.hellospring.entity.User" %><%--
   Created by IntelliJ IDEA.
   User: joyce
   Date: 2017/4/2
@@ -11,6 +11,9 @@
     <title>Shortcut Technologies</title>
 </head>
 <%@include file="include.jsp"%>
+<%
+    User user = (User) session.getAttribute("loginUser");
+%>
 <body>
     <div id="wrapper">
         <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
@@ -26,8 +29,7 @@
 
             <div class="header-right">
 
-                <a href="message-task.html" class="btn btn-info" title="New Message"><b>30 </b><i class="fa fa-envelope-o fa-2x"></i></a>
-                <a href="message-task.html" class="btn btn-primary" title="New Task"><b>40 </b><i class="fa fa-bars fa-2x"></i></a>
+                <a href="javascript:void(0);" class="btn btn-primary" title="New Message"><b style="font-size: 20px">您好，<%=user.getName()%></b></a>
                 <a href="<%=basePath%>logout" class="btn btn-danger" title="Logout"><i class="fa fa-exclamation-circle fa-2x"></i></a>
 
             </div>
