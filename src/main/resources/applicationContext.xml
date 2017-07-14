@@ -30,7 +30,7 @@
         <property name="filterChainDefinitions">
             <value>
                 # some example chain definitions:
-                /user/main = anon
+                /user/main = authc
                 /config/** = authc,roles[admin]
                 /images/** = anon
                 /css/** = anon
