@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>没有访问权限</title>
+    <title>登录超时</title>
     <%@include file="../include.jsp"%>
     <link href="<%=basePath%>css/error.css" rel="stylesheet" />
 </head>
