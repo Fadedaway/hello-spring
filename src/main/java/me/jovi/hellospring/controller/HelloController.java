@@ -55,8 +55,8 @@ public class HelloController {
         userRepo.save(user);
     }
 
-//    @RequestMapping(value = "/", method = RequestMethod.GET)
-//    public String index(){
-//        return "index";
-//    }
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String index(){
+        return "login";
+    }
 }

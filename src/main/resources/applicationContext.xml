@@ -14,10 +14,9 @@
 
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="securityManager"/>
-        <property name="loginUrl" value="/login.jsp"/>
+        <property name="loginUrl" value="/user/login"/>
         <property name="unauthorizedUrl" value="/error/unauthorized"/>
         <!-- override these for application-specific URLs if you like:
-        <property name="loginUrl" value="/login.jsp"/>
         <property name="successUrl" value="/home.jsp"/>
         <property name="unauthorizedUrl" value="/unauthorized.jsp"/> -->
         <!-- The 'filters' property is not necessary since any declared javax.servlet.Filter bean  -->
@@ -32,7 +31,7 @@
             <value>
                 # some example chain definitions:
                 /user/main = anon
-                /config/**/** = authc,roles[admin]
+                /config/** = authc,roles[admin]
                 /images/** = anon
                 /css/** = anon
                 /js/** = anon

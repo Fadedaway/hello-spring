@@ -10,7 +10,7 @@
 <head>
     <title>登   录</title>
 </head>
-<%@include file="WEB-INF/pages/include.jsp"%>
+<%@include file="include.jsp"%>
 <body style="background-color: #FFFFFF;">
     <div class="container">
         <div class="row text-center " style="padding-top:100px;">

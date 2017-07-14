@@ -30,6 +30,11 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
+    @RequestMapping("/login")
+    public String login(){
+        return "login";
+    }
+
     @RequestMapping(value = "/doLogin")
     @ResponseBody
     public ReqResult doLogin(User user, HttpServletRequest request){

@@ -15,4 +15,14 @@ public class ErrorController {
     public String unauthorized(){
         return "error/unauthorized";
     }
+
+    @RequestMapping(value = "/error404", method = RequestMethod.GET)
+    public String error404(){
+        return "error/error404";
+    }
+
+    @RequestMapping(value = "/error500", method = RequestMethod.GET)
+    public String error500(){
+        return "error/error500";
+    }
 }
