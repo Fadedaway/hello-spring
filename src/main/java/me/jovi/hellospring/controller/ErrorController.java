@@ -25,4 +25,14 @@ public class ErrorController {
     public String error500(){
         return "error/error500";
     }
+
+    /**
+     * 会话过期
+     * @return
+     * @author fanjiawei
+     */
+    @RequestMapping(value = "/invalidSession", method = RequestMethod.GET)
+    public String invalidSession(){
+        return "error/invalidSession";
+    }
 }
